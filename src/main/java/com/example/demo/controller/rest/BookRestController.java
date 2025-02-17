@@ -1,6 +1,6 @@
 package com.example.demo.controller.rest;
 
-<<<<<<< HEAD
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,11 +69,5 @@ public class BookRestController {
 	public ResponseEntity<ApiResponse<Void>>handleBookExceptions(BookException e){
 		return ResponseEntity.status(500).body(ApiResponse.error(500, e.getMessage()));
 	}
-	
-
-=======
-public class BookRestController {
-
-	
->>>>>>> 44fc16ad4de7b3a3fd2a0beba4b2799ac9685679
 }
+	

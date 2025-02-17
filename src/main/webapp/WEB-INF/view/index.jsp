@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
-=======
->>>>>>> 44fc16ad4de7b3a3fd2a0beba4b2799ac9685679
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +26,6 @@ img {
 	margin-top: 50px; /* 距离顶部留出间距 */
 	font-size: 2.5em; /* 调整字体大小 */
 	color: #333; /* 设置文字颜色 */
->>>>>>> 44fc16ad4de7b3a3fd2a0beba4b2799ac9685679
 }
 </style>
 </head>

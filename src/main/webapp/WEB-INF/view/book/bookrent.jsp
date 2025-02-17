@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 44fc16ad4de7b3a3fd2a0beba4b2799ac9685679
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- Jakarta JSTL 表單標籤 -->

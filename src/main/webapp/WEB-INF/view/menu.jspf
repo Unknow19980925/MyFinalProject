@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <div style="background-color: #dddddd">
 	<div style="padding: 10px">
@@ -15,22 +14,10 @@
 	<a href="/rentlist/checkout" class="button-secondary pure-button">租借確認</a>
 	<a href="/login/logout" class="button-secondary pure-button" >登出</a>
 	<a href="/rentlist/history" class="button-secondary pure-button" >紀錄</a>
-	<c:if test="${userCert.role eq 'ADMIN' }">
+	<c:if test="${userCert.role eq 'ROLE_ADMIN' }">
 	<a href="/books" class="button-secondary pure-button" >書籍管理</a>	
 	</c:if>
 	</c:otherwise>
 	</c:choose>
-=======
-<div style="background-color: #dddddd">
-	<div style="padding: 10px">
-		${ (userCert eq null) ? "尚未登入" : userCert.username }
-		<a href="/user/register" class="button-secondary pure-button">註冊</a>
-		<a href="/login" class="button-secondary pure-button" >登入</a>
-		<a href="/rentlist/bookrent" class="button-secondary pure-button">租借書籍</a>
-		<a href="/rentlist/checkout" class="button-secondary pure-button">租借確認</a>
-		<a href="/books" class="button-secondary pure-button" >書籍管理</a>	
-		<a href="/login/logout" class="button-secondary pure-button" >登出</a>
-		<a href="/rentlist/history" class="button-secondary pure-button" >紀錄</a>
->>>>>>> 44fc16ad4de7b3a3fd2a0beba4b2799ac9685679
 	</div>														
 </div>	
