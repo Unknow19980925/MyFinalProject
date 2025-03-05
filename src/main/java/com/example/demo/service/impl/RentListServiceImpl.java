@@ -1,19 +1,16 @@
 package com.example.demo.service.impl;
 
-import java.util.ArrayList;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import static java.util.stream.Collectors.toList;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 import com.example.demo.exception.BookNotFoundException;
 import com.example.demo.exception.UserNotFoundException;
@@ -63,19 +60,18 @@ public class RentListServiceImpl implements RentListService {
 	public List<RentListDto> getAllRentLists(Integer userId, String rentStatus) {
 		List<RentList> rentLists = rentListRepository.findByUserUserId(userId);
 
-		// 将 RentList 转换为 RentListDto
 		return rentLists.stream().map(rentList -> {
 			// 映射 RentList 到 RentListDto
 			RentListDto rentListDto = modelMapper.map(rentList, RentListDto.class);
 			
-			// 获取 RentItem 并映射到 RentItemDto
+			// 獲取 RentItem 並映射到 RentItemDto
 			RentItem rentItem = rentList.getRentItem();
 			if(rentItem != null) {
 				RentItemDto rentItemDto = modelMapper.map(rentItem, RentItemDto.class);
 				rentListDto.setRentItemDto(rentItemDto);
 			}
 			
-			return rentListDto; // 返回映射后的 DTO
+			return rentListDto; // 返回映射後的DTO
 		}).collect(Collectors.toList());
 	}
 

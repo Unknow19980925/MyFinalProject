@@ -34,28 +34,26 @@ public class LoginController {
 	public String loginPage() {
 		return "login";
 	} 
+	
 	@PostMapping
 	public String checkLogin(@RequestParam String username,@RequestParam String password, HttpSession session,HttpServletRequest req, Model model) {
-
 		User user=userRepository.findByUsername(username).orElse(null);
 		if(user==null||!user.getPasswordHash().equals(Hash.getHash(password,user.getSalt()))) {
 			model.addAttribute("message","使用者名稱或密碼錯誤");
 			return"error";
 		}
 		UserCert usercert=new UserCert(user.getUserId(), user.getUsername(), user.getRole());
-		
-		
 		try {
 			usercert=certService.getceCert(username, password);
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
 			return "error";
 		}
-		
 		session.setAttribute("userCert", usercert);
-		session.setAttribute("locale", req.getLocale());
+		session.setAttribute("locale", req.getLocale());//設定使用者語言
 		return "index";//登入後返回首頁
 	}
+	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

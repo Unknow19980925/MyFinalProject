@@ -3,8 +3,6 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,10 +32,8 @@ import com.example.demo.model.dto.BookDto;
 import com.example.demo.model.dto.RentItemDto;
 import com.example.demo.model.dto.RentListDto;
 import com.example.demo.model.dto.UserCert;
-import com.example.demo.model.dto.UserDto;
 import com.example.demo.repository.BookStatusRepository;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.response.ApiResponse;
 import com.example.demo.service.BookService;
 import com.example.demo.service.RentItemService;
 import com.example.demo.service.RentListService;
@@ -97,18 +93,6 @@ public class RentListController {
 			e.printStackTrace();
 		}
 		return "redirect:/error";
-	}
-
-	@GetMapping("/list")
-	public ResponseEntity<ApiResponse<List<RentListDto>>> getRentList(Model model, @RequestParam Integer userId,
-			@RequestParam(required = false) String rentStatus, HttpSession session) {
-		UserDto userDto = (UserDto) session.getAttribute("userDto");
-		if (userDto == null) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ApiResponse.error(403, "未登入和session已過期"));
-		}
-		// 直接抓
-		List<RentListDto> rentListDtos = rentListService.getAllRentLists(userId, rentStatus);
-		return ResponseEntity.ok(ApiResponse.success("查詢成功", rentListDtos));
 	}
 
 	@GetMapping("/checkout")
